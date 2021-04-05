@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     this.loadingUploadedFiles = false;
     this.identity = this.userService.getIdentity();
     this.token = this.userService.getToken();
-    this.apiUrl = environment.apiURL;
+    this.apiUrl = environment.apiUrlProd;
   }
 
   ngOnInit(): void {
