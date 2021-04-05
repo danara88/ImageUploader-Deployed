@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row page">
+        <div class="col-md-12 page__body">
+
+            <div class="card-custom card--drag animated fadeIn">
+
+                <div class="card-custom__header">
+                    <h3>Upload your photos</h3>
+                    <p class="card-custom__header-text">File should be Jpeg, Png,...</p>
+                </div>
+            
+                <div class="card-custom__body">
+            
+                  <div 
+                    class="drag"
+                    appUploadFile
+                    (mouseIsHover)="mouseIsHover = $event"
+                    [filesToUpload]="filesToUpload"
+                    [ngClass]="{'drag--hover': mouseIsHover}">
+
+                      <div class="drag__image">
+                          <i class="fas fa-image"></i>
+                      </div>
+                      <span class="drag__text">
+                        Drag & Drop your images here
+                      </span>
+                  </div>
+            
+                </div>
+            
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>

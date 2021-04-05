@@ -1,1 +1,397 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-size: 16px;
+    font-size: 1.6rem;
+    background: #FAFAFB;
+    font-family: 'Roboto', sans-serif;
+}
+
+ul, a {
+    list-style: none;
+    text-decoration: none;
+}
+
+/** Variables */
+:root {
+    --muted-color: #828282;
+    --blue-color: #2F80ED;
+    --green-color: #219653;
+}
+
+
+/** HEADER */
+.header {
+    width: 100%;
+    margin-bottom: 3rem;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__menu {
+    display: flex;
+}
+
+.header__menu-option {
+    margin: 0 2rem;
+    transition: all 300ms;
+}
+
+.header__menu-option a {
+    color: var(--muted-color);
+
+} 
+
+.signout {
+    color: var(--muted-color);
+    cursor: pointer;
+}
+
+.header__menu-option a i {
+    margin-right: 1rem;
+}
+
+.logo {
+    margin-right: 2rem;
+    color: var(--muted-color);
+}
+
+
+/** CARD */
+.card-custom {
+    background: #fff;
+    box-shadow: 0px 0px 3px #ccc;
+    width: 50rem;
+    margin: 7rem auto;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.card-custom--image {
+    width: 100%;
+}
+
+.card-custom__header {
+    text-align: center;
+    padding: 3rem 0;
+    position: relative;
+}
+
+.card-custom__header h3 {
+    font-weight: 400;
+}
+
+.card-custom__header-text {
+    color: var(--muted-color);
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.card-custom__header-icon {
+    color: var(--green-color);
+    font-size: 2rem;
+}
+
+.card-custom__image {
+    display: flex;
+    justify-content: center;
+}
+
+.card-custom__image > img{
+    display: block;
+    width: 20rem;
+}
+
+.card-custom__header-trash {
+    float: right;
+    color: rgba(0,0,0,0.2);
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    transition: all 300ms;
+    font-size: 1.3rem;
+}
+
+.card-custom__header-trash:hover {
+    color: red;
+}
+
+.card--drag {
+    padding-bottom: 2rem;
+}
+
+.card-custom__link {
+    margin-top: 2rem;
+    padding: 0 2rem;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.card-custom__link > button {
+    position: absolute;
+    right: 0px;
+    margin-right: 2rem;
+}
+
+.card-custom__link > input {
+    background: #F6F8FB;
+    border-radius: .5rem;
+    padding: 1rem;
+    outline: none;
+    width: 84%;
+    border: none;
+    font-size: 1.3rem;
+    box-shadow: 0px 0px 3px #ccc;
+}
+
+
+/** CARD IMAGE */
+.page__images-to-upload {
+    display: flex;
+}
+
+.card-image {
+    background: white;
+    box-shadow: 0px 0px 3px #ccc;
+    display: flex;
+    min-width: 30rem;    
+}
+
+.card-image__info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image__title {
+    color: var(--muted-color);
+}
+
+.card-image__size {
+    font-size: 1.3rem;
+}
+
+.card-image__image > img{
+    width: 8rem;
+}
+
+/** PROGRESS BAR */
+.progress-bar-c {
+    width: 90%;
+    margin: auto;
+    border-radius: 1rem;
+}
+
+.progress-bar-c__line {
+    height: .7rem;
+    width: 100%;
+    background: #F2F2F2;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+@keyframes progressMove {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(500%);
+    }
+}
+
+.blue-progress {
+    height: .7rem;
+    width: 10rem;
+    background: var(--blue-color);
+    border-radius: .5rem;
+    animation: progressMove 1.5s infinite;
+}
+
+
+
+/** DRAG */
+.drag {
+    border-radius: 2rem;
+    border: .2rem dashed rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0rem 3rem 2rem 3rem;
+    padding: 2rem 0;
+    background: #FAFAFB;
+}
+
+.drag--hover {
+    border: .2rem dashed var(--blue-color);
+}
+
+.drag__image {
+    font-size: 13rem;
+    color: var(--muted-color);
+}
+
+.drag__text {
+    font-size: 1.5rem;
+    color: var(--muted-color);
+}
+
+
+
+/** FORM */
+.form-custom {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.form-custom__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+
+.form-custom__group > input {
+    padding: 1rem;
+    border: .1rem solid rgba(0,0,0,0.1);
+    outline: none;
+    border-radius: .5rem;
+    transition: all 300ms;
+    width: 100%;
+}
+
+.form-custom__group--invalid > input {
+    border: .1rem solid #DC3E3E;
+}
+
+.form-custom__group > input:focus {
+    border: .1rem solid var(--blue-color);
+}
+
+.form-custom__group > label {
+    font-size: 1.4rem;
+    margin-bottom: .2rem;
+}
+
+.form__group-row {
+    width: 100%;
+    display: flex;
+}
+
+.form__group-row .form-custom__group:last-child {
+    margin-left: .2rem;
+}
+
+
+/** BOTON */
+.btn-custom {
+    border: 0rem;
+    background: var(--blue-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-custom:hover {
+    box-shadow: -.2rem 0rem .3rem #ccc;
+}
+
+@keyframes copyText {
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(.7, .7);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.btn-custom--copy {
+    padding: .7rem 1rem;
+    border-radius: 1rem;
+    animation: copyText 500ms linear;
+    outline: none;
+    transition: all 100ms;
+}
+
+.btn-custom--copy:active {
+    transform: scale(.8, .8);
+    background: var(--green-color);
+}
+
+.spinner-border {
+    width: 5rem;
+    height: 5rem;
+    color: var(--blue-color);
+    animation-duration: .7s;
+}
+
+
+/** PAGE */
+.page__content {
+    color: var(--muted-color);
+}
+
+.page__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/** ALERTS */
+.alert {
+    border-radius: 1rem;
+    border: none;
+}
+
+.alert-success {
+    background: var(--green-color);
+    color: white;
+}
+
+.alert > i {
+    margin-right: 1rem;
+}
+
+
+/** DRAWING */
+.drawing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+    margin: 20rem auto;
+}
+
+.drawing__image {
+    font-size: 10rem;
+    color: #A6A1A1;
+}
+
+.drawing__text {
+    color: #A6A1A1;
+}
+
+
+
+
+
+
+

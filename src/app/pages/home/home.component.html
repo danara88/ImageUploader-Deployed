@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="row page">
+        <div class="col-md-12 page__header animated fadeIn">
+
+            <div class="page__header-info" *ngIf="!loadingUploadedFiles">
+                <h2 class="page_title">Welcome, {{ identity.username }}</h2>
+                <p class="page__content">Here you will see all your uploaded photos </p>
+            </div>
+
+
+        </div>
+        <div class="col-md-12 page__body">
+            
+            <!-- Mensajer de alerta -->
+            <div class="alert alert-success animated fadeIn fast" *ngIf="alertMessage && status === 'success'">
+                <i class="fas fa-check"></i>
+                <span class="alert-c__text">{{ alertMessage }}</span>
+            </div>
+            <!-- Mensajer de alerta -->
+
+            <div class="alert alert-danger animated fadeIn fast" *ngIf="status === 'error' && errors">
+                <span class="text-danger" *ngFor="let error of errors">{{ error.msg }}</span>
+            </div>
+
+
+            <!-- Mensaje cuando no hay imágenes para mostrar -->
+            <div class="drawing animated fadeIn" *ngIf="images && !images.length">
+                <div class="drawing__image">
+                    <i class="far fa-images"></i>
+                </div>
+                <span class="drawing__text">Not photos to show</span>
+            </div>
+            <!-- Mensaje cuando no hay imágenes para mostrar -->
+
+
+            <!-- Imágenes -->
+            <div class="row" *ngIf="images && images.length && !loadingUploadedFiles">
+                <div class="col-md-4" *ngFor="let image of images; let idx = index">
+                    <div class="card-custom card--drag animated fadeIn card-custom--image" *ngIf="!loader">
+
+                        <div class="card-custom__header">
+                            <i class="fas fa-trash card-custom__header-trash" (click)="deletImage( image )"></i> 
+                            <i class="fas fa-check-circle card-custom__header-icon"></i>
+                            <h3>{{ image.path }}</h3>
+                        </div>
+                    
+                        <div class="card-custom__body">
+                            <div class="card-custom__image">
+                                <img src="{{ apiUrl + 'images/my-image/' + image.path }}" alt="{{ image.path }}">
+                            </div>
+                        </div>
+
+                        <div class="card-custom__footer">
+                           <div class="card-custom__link">
+                               <input type="text" id="foo" value="{{ apiUrl + 'images/my-image/' + image.path }}" readonly>
+                               <button class="btn-custom btn-custom--copy" cdkCopyToClipboard="{{apiUrl + 'images/my-image/' + image.path}}">Copy</button>
+                           </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+            <!-- Imágenes -->
+
+              <!-- Card loader files -->
+              <div class="card-custom card--drag animated fadeIn" *ngIf="loadingUploadedFiles">
+
+                <div class="card-custom__header">
+                    <h3>Uploading files ...</h3>
+                </div>
+            
+                <div class="card-custom__body">
+                    
+                    <div class="progress-bar-c">
+                        <div class="progress-bar-c__line">
+                            <div class="blue-progress"></div>
+                        </div>
+                    </div>
+                  
+                </div>
+            
+            </div>
+            <!-- Card loader files -->
+
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+
+
+<div class="card-custom animated fadeIn" *ngIf="!loader">
+
+    <div class="card-custom__header">
+        <h3>Create account</h3>
+    </div>
+
+    <div class="card-custom__body">
+
+        <div class="alerts-messages" *ngIf="status === 'error' && errors">
+            <span class="text-danger" *ngFor="let error of errors">{{ error.msg }}</span>
+        </div>
+
+        <form class="form-custom"
+              [formGroup]="elementForm"
+              (ngSubmit)="submit()">
+
+            <div class="form-custom__group" [class.form-custom__group--invalid]="invalidField('username')">
+                <label for="username">Username</label>
+                <input 
+                    type="text" 
+                    id="usernmae" 
+                    name="username" 
+                    placeholder="Example: pedro8890"
+                    formControlName="username">
+            </div>
+            <div class="form-custom__group" [class.form-custom__group--invalid]="invalidField('email')">
+                <label for="email">Email</label>
+                <input 
+                    type="text" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Example: pedro@gmail.com"
+                    formControlName="email">
+            </div>
+            <div class="form__group-row">
+                <div class="form-custom__group" [class.form-custom__group--invalid]="invalidField('password1')">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Minimum 6 characters"
+                        formControlName="password1">
+                </div>
+                <div class="form-custom__group" [class.form-custom__group--invalid]="invalidField('password2')">
+                    <label for="repeatPassword">Repeat password</label>
+                    <input 
+                        type="password" 
+                        id="repeatPassword" 
+                        name="repeatPassword"
+                        placeholder="Repeat password"
+                        formControlName="password2">
+                </div>
+            </div>
+            <div class="form-custom__group">
+                <input 
+                    type="submit" 
+                    class="btn-custom" 
+                    value="Let's go !">
+                    
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div class="d-flex justify-content-center mt-5" *ngIf="loader">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>    

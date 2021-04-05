@@ -1,0 +1,58 @@
+
+
+<div class="card-custom animated fadeIn" *ngIf="!loader">
+
+    <div class="card-custom__header">
+        <h3>Sign in</h3>
+    </div>
+
+    <div class="card-custom__body">
+
+        <div class="alerts-messages" *ngIf="status === 'error'">
+            <span class="text-danger">{{ alertMessage }}</span>
+        </div>
+
+        <form class="form-custom"
+              [formGroup]="elementForm"
+              (ngSubmit)="submit()">
+
+            <div class="form-custom__group">
+                <label for="username">Username</label>
+                <input 
+                    type="text" 
+                    id="usernmae" 
+                    name="username" 
+                    placeholder="Example: pedro8890"
+                    formControlName="username">
+            </div>
+            
+            <div class="form__group-row">
+                <div class="form-custom__group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Minimum 6 characters"
+                        formControlName="password">
+                </div>
+            </div>
+            <div class="form-custom__group">
+                <input 
+                    type="submit" 
+                    class="btn-custom" 
+                    value="Log in !">
+                    
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div class="d-flex justify-content-center mt-5" *ngIf="loader">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>    
